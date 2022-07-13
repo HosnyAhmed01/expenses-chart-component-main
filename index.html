@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Expenses chart component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      /* start global roles */
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        background-color: var(--Cream);
+      }
+      :root {
+        --soft-red: hsl(10, 79%, 65%);
+        --Cyan: hsl(186, 34%, 60%);
+        --Dark-brown: hsl(25, 47%, 15%);
+        --Medium-brown: hsl(28, 10%, 53%);
+        --Cream: hsl(27, 66%, 92%);
+        --Very-pale-orange: hsl(33, 100%, 98%);
+      }
+      /* End global roles */
+
+      /* Start container */
+      .container {
+        width: 1100px;
+        margin: auto;
+      }
+      @media only screen and (max-width: 770px) {
+        .container {
+          width: 750px;
+        }
+      }
+
+      .container .sub-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 40px);
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+      }
+
+      /* End container */
+
+      /* Start Header */
+
+      .header {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        background-color: var(--soft-red);
+        font-size: 18px;
+        padding: 20px;
+        align-items: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      .header p {
+        position: relative;
+        top: -20px;
+        color: rgb(255 250 245 / 71%);
+      }
+      .header p span {
+        position: absolute;
+        top: 25px;
+        left: -10px;
+        font-size: 30px;
+        color: #fff;
+      }
+      /* End Header */
+
+      /* Start content */
+      .main-content {
+        width: 70%;
+        padding: 20px;
+        background-color: var(--Very-pale-orange);
+        border-radius: 10px;
+      }
+      .main-content p {
+        color: var(--Dark-brown);
+        font-weight: bold;
+        padding-left: 50px;
+        font-size: xx-large;
+      }
+      .main-content .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+      .main-content .row::after {
+        content: "";
+        width: 80%;
+        height: 4px;
+        background-color: var(--Cream);
+        margin: 20px 0;
+      }
+      .main-content .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .main-content .colum-progress {
+        width: 50px;
+        padding: 0px 15px;
+        height: 0;
+        background-color: var(--soft-red);
+        margin-top: 45px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+        position: relative;
+      }
+      .main-content .colum-progress:hover::before {
+        content: "$" attr(data-height);
+        width: 50px;
+        height: 30px;
+        background-color: var(--Dark-brown);
+        color: #fff;
+        position: absolute;
+        text-align: center;
+        line-height: 30px;
+        left: 0;
+        top: -35px;
+        border-radius: 5px;
+      }
+      .main-content .colum-progress:hover {
+        background-color: var(--Cyan);
+      }
+      .main-content .colum-day {
+        color: var(--Medium-brown);
+      }
+      /* End content */
+
+      /* Satrt Footer */
+      .footer {
+        position: relative;
+        height: 80px;
+      }
+      .footer p:nth-of-type(1) {
+        position: absolute;
+        top: 25px;
+        font-size: medium;
+        opacity: 0.3;
+      }
+      .footer p:nth-of-type(2) {
+        position: absolute;
+        top: 34px;
+        font-size: xxx-large;
+        left: -15px;
+      }
+      .footer p:nth-of-type(3) {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        font-size: x-large;
+      }
+      .footer p:nth-of-type(4) {
+        position: absolute;
+        right: 10px;
+        top: 54px;
+        font-size: medium;
+        opacity: 0.5;
+      }
+      /* End Footer */
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sub-container">
+        <div class="header">
+          <p class="my-balance">
+            My balance
+            <span class="value">$921.48</span>
+          </p>
+
+          <svg
+            width="72"
+            height="48"
+            viewBox="0 0 72 48"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <circle fill="#382314" cx="48" cy="24" r="24" />
+              <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+            </g>
+          </svg>
+        </div>
+        <div class="main-content">
+          <p>Spending - Last 7 days</p>
+          <div class="row">
+            <div class="column">
+              <div class="colum-progress" data-height="17.45"></div>
+              <div class="colum-day">mon</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="34.91"></div>
+              <div class="colum-day">tue</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="52.36"></div>
+              <div class="colum-day">wed</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="31.07"></div>
+              <div class="colum-day">thu</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="23.39"></div>
+              <div class="colum-day">fri</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="43.28"></div>
+              <div class="colum-day">sat</div>
+            </div>
+            <div class="column">
+              <div class="colum-progress" data-height="25.48"></div>
+              <div class="colum-day">sun</div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <p>Total this month</p>
+            <p>$478.33</p>
+            <p>+2.4%</p>
+            <p>from last month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
